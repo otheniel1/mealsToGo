@@ -7,6 +7,7 @@ import { RestaurantInfoCard } from "../components/restaurants-info-card.componen
 import { SafeArea } from "../../../components/utility/safe-area.component";
 
 import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
+import { Search } from "../components/search.component";
 
 const SearchView = styled.View`
   padding: ${(props) => props.theme.space[3]};
@@ -35,16 +36,13 @@ export const RestaurantsScreen = () => {
     <SafeArea>
       {isLoading && (
         <LoadingContainer>
-          <Loading size={50} animating={true} color={Colors.red300}></Loading>
+          <Loading size={50} animating={true} color={Colors.red300} />
         </LoadingContainer>
       )}
-      <SearchView>
-        <Searchbar />
-      </SearchView>
+      <Search />
       <RestaurantList
         data={restaurants}
         renderItem={({ item }) => {
-          console.log(item);
           return (
             <Spacer position="bottom" size="large">
               <RestaurantInfoCard restaurant={item} />
